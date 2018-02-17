@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { GithubService } from "./github.service";
 
 @Component({
   selector: "app-root",
@@ -6,5 +7,21 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "With the help of this project (made in Angular 5), you'll be able to search People on GitHub.";
+  userName: string;
+  user: any[];
+
+  constructor(private _service: GithubService) {}
+
+  fetchData() {
+    this._service.getUser().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  searchUser(e) {
+    if (e.which == 13) {
+      this._service.setUser(this.userName);
+      this.fetchData();
+    }
+  }
 }

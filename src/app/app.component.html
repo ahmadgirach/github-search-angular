@@ -1,5 +1,62 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>GitHub Profile Search</h1>
-  <p>{{ title }}</p>
+<section class="section">
+  <div class="container">
+    <div class="column">
+      <h2 class="title">GitHub Search</h2>
+    </div>
+    <div class="column is-two-fifths">
+      <input type="text" class="input" name="userName" [(ngModel)]="userName" (keyup)="searchUser($event)" placeholder="Enter GitHub Username and hit enter..."
+      />
+    </div>
+  </div>
+</section>
+
+<div id="wrapper" *ngIf="user">
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">{{user.name}}</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">{{user.followers}}</p>
+        <p class="subtitle">Followers</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">{{user.following}}</p>
+        <p class="subtitle">Following</p>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <p class="title">{{user.public_repos}}</p>
+        <p class="subtitle">Public Repos</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
+      <div class="tile">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <figure class="image is-1by1">
+              <img src="{{user.avatar_url}}" alt="This should be user avatar...">
+            </figure>
+          </article>
+        </div>
+        <div class="tile is-8 is-vertical">
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <p class="title">{{user.bio}}</p>
+              <p class="subtitle">{{user.location}}</p>
+              <a href="{{user.html_url}}" class="button is-primary" target="new">View Full Profile</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
