@@ -1,9 +1,0 @@
-#wrapper,
-#not_found {
-  margin-left: 39px;
-}
-
-article:hover {
-  background-color: #e4e4e4;
-  transition: all 0.5s;
-}
