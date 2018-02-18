@@ -19,4 +19,10 @@ export class GithubService {
   setUser(user: string) {
     this.userName = user;
   }
+
+  getUserRepos() {
+    return this.fetch(
+      "http://api.github.com/users/" + this.userName + "/repos"
+    );
+  }
 }
