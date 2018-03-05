@@ -23,8 +23,10 @@ export class AppComponent {
   }
 
   searchUser(e) {
-    this._service.setUser(this.userName);
-    this._service.getUser().subscribe(user => (this.user = user));
-    this._service.getUserRepos().subscribe(repos => (this.repos = repos));
+    if (e.which == 13) {
+      this._service.setUser(this.userName);
+      this._service.getUser().subscribe(user => (this.user = user));
+      this._service.getUserRepos().subscribe(repos => (this.repos = repos));
+    }
   }
 }
