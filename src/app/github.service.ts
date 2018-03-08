@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Http, Headers } from "@angular/http";
+import { Observable } from "rxjs/Observable";
 import "rxjs/Rx";
 
 @Injectable()
@@ -9,7 +10,12 @@ export class GithubService {
   constructor(private _http: Http) {}
 
   fetch(url: string) {
-    return this._http.get(url).map(result => result.json());
+    return this._http
+      .get(url)
+      .map(result => result.json())
+      .catch(e => {
+        return Observable.throw(new Error("Such User wasn't found..."));
+      });
   }
 
   getUser() {
