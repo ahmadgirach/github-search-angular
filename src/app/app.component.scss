@@ -9,7 +9,7 @@
 article:hover {
   background-color: #0089f3;
   transition: all 0.5s;
-  >  {
+  > {
     .title,
     .subtitle {
       color: #ffffff;
@@ -19,4 +19,13 @@ article:hover {
       background-color: #ffffff;
     }
   }
+}
+
+#errors {
+  margin-left: 32px;
+  animation: fadeIn 2s;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
 }

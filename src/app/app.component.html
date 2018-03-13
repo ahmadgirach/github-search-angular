@@ -8,7 +8,7 @@
   </div>
 </section>
 
-<div id="wrapper" *ngIf="user">
+<div id="wrapper" *ngIf="user && !userNotFound">
   <div class="tile is-ancestor">
     <div class="tile is-parent">
       <article class="tile is-child box">
@@ -58,8 +58,14 @@
     </div>
   </div>
 </div>
+
+<!-- <div [hidden]="!this.userNotFound" id="errors" class="tile is-parent tag is-medium is-danger">
+  <h3 class="subtitle">Such user wasn't found...</h3>
+</div> -->
+
 <br/>
 <br/>
+
 <div id="repos" *ngIf="repos">
   <div class="tile is-ancestor">
     <p class="title">Repositories List</p>

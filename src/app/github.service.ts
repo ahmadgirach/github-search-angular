@@ -9,13 +9,13 @@ export class GithubService {
 
   constructor(private _http: Http) {}
 
-  fetch(url: string) {
+  private fetch(url: string) {
     return this._http
       .get(url)
-      .map(result => result.json())
-      .catch(e => {
-        return Observable.throw(new Error("Such User wasn't found..."));
-      });
+      .map(
+        result => (result.status !== 404 ? result.json() : Observable.empty())
+      )
+      .catch(err => Observable.throw("Such User wasn't found..."));
   }
 
   getUser() {
