@@ -11,7 +11,6 @@ export class AppComponent {
   userName: string;
   user: any;
   repos: any;
-  userNotFound: boolean = false;
 
   constructor(private _service: GithubService) {
     this.userName = "";
@@ -20,13 +19,12 @@ export class AppComponent {
   ngOnInit() {
     const input = <HTMLElement>document.getElementsByClassName("input")[0];
     input.focus();
-    // const errors = document.getElementById("errors");
-    // if (!this.userName) errors.style.display = "none";
   }
 
   searchUser(e) {
     if (e.which == 13) {
       if (!this.userName) {
+        alert("You should enter a Username in order to search...");
         e.preventDefault();
       } else {
         this._service.setUser(this.userName);
@@ -38,8 +36,6 @@ export class AppComponent {
               .getUserRepos()
               .subscribe(repos => (this.repos = repos));
           });
-        } else {
-          this.userNotFound = true;
         }
       }
     }
